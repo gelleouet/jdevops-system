@@ -60,6 +60,13 @@ stop()
 {	
 	iptables -t filter -F
 	iptables -t filter -X
+	
+	# rebasculer les politiques par défauts à accep sinon même en supprimant
+	# les règles, tout sera bloqué
+	iptables -P INPUT   ACCEPT
+  	iptables -P FORWARD ACCEPT
+  	iptables -P OUTPUT  ACCEPT
+  	
 	return 0
 }
 
