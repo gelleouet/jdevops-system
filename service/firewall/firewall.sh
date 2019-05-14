@@ -26,9 +26,8 @@ start()
 	iptables -t filter -A INPUT -i lo -j ACCEPT
 	iptables -t filter -A OUTPUT -o lo -j ACCEPT
 	
-	# SSH
-	iptables -t filter -A INPUT -p tcp --dport ${SSH_PORT:-22000} -j ACCEPT
-	iptables -t filter -A OUTPUT -p tcp --dport ${SSH_PORT:-22000} -j ACCEPT
+	# SSH (par défaut juste sortant)
+	iptables -t filter -A OUTPUT -p tcp --dport 22 -j ACCEPT
 	
 	# DNS
 	iptables -t filter -A OUTPUT -p tcp --dport 53 -j ACCEPT

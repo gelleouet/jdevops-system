@@ -5,7 +5,6 @@ After=network.target
 [Service]
 Type=oneshot
 RemainAfterExit=true
-Environment="SSH_PORT=XXXX"
 Environment="MYIP=X.X.X.X"
 ExecStart=/usr/local/bin/firewall.sh start
 ExecStop=/usr/local/bin/firewall.sh stop
