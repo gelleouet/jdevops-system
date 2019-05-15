@@ -77,9 +77,15 @@ case "$1" in
     echo "Starting firewall..."
     stop
     start
+    exit 0
     ;;
   stop)
     echo "Stopping firewall..."
     stop
+    exit 0
     ;;
+  *)
+  	echo "Usage : firewall [start|stop|restart]"
+  	exit 1
+  	;;
 esac
