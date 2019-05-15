@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Script pare-feu
 #
 # Utilise iptables pour bloquer les accès entrants et accepter les ports autorisés 
