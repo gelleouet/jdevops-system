@@ -14,7 +14,7 @@
 
 PROJECT="$1"
 
-if [ -z "PROJECT" ]; then
+if [ -z "$PROJECT" ]; then
   echo "Usage : install-integration project-name"
   exit 1
 fi
