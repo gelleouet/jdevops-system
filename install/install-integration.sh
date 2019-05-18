@@ -12,8 +12,14 @@
 # @author Gregory Elleouet <gregory.elleouet@gmail.com>
 #
 
+PROJECT="$1"
 
-CONFIG_FILE="/root/.smarthome-application.build"
+if [ -z "PROJECT" ]; then
+  echo "Usage : install-integration project-name"
+  exit 1
+fi
+
+CONFIG_FILE="/root/.${PROJECT}.build"
 
 
 # charge la dernière conf build
