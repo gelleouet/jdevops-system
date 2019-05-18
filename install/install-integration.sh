@@ -263,8 +263,12 @@ if [ -z "\$PROJECT_VERSION" ]; then
 fi
 
 if [ ! -f "\$WAR_FILE" ]; then
-  echo "War not exist ! (\$WAR_FILE)"
-  exit 1
+  WAR_FILE="$PROJECT_PATH/build/libs/${PROJECT_NAME}-\${PROJECT_VERSION}.war.original"
+  
+  if [ ! -f "\$WAR_FILE" ]; then
+    echo "War not exist ! (\$WAR_FILE)"
+    exit 1
+  fi
 fi
 
 rm -r \$INSTANCE
