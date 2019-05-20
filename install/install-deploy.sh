@@ -77,7 +77,7 @@ read -p "Catalina base [default=$DEFAULT_CATALINA_BASE]: " CATALINA_BASE
 echo "-------------------"
 echo "Deploy environnement"
 echo "--------------------"
-read -p "Deploy path [default=$DEFAULT_INTEGRATION_URL]: " INTEGRATION_URL
+read -p "Integration URL [default=$DEFAULT_INTEGRATION_URL]: " INTEGRATION_URL
 read -p "Deploy path [default=$DEFAULT_DEPLOY_PATH]: " DEPLOY_PATH
 read -p "Deploy context [default=$DEFAULT_DEPLOY_CONTEXT]: " DEPLOY_CONTEXT
 read -p "HTTP port [default=$DEFAULT_HTTP_PORT]: " HTTP_PORT
