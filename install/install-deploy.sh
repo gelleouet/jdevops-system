@@ -233,8 +233,7 @@ mkdir \$INSTANCE/logs
 mkdir \$INSTANCE/temp
 mkdir \$INSTANCE/work
 mkdir \$INSTANCE/webapps
-cp \$WAR_FILE \$INSTANCE/webapps/${DEPLOY_CONTEXT}.war
-scp -i /root/.ssh/jdevops.key -P 22000 $INTEGRATION_URL:/opt/artefacts/\$WAR_FILE ${DEPLOY_CONTEXT}.war
+scp -i /root/.ssh/jdevops.key -P 22000 $INTEGRATION_URL:/opt/artefacts/\$WAR_FILE \$INSTANCE/webapps/${DEPLOY_CONTEXT}.war
 
 sed -i -e "s/serverId.pid/\${INSTANCE_NAME}.pid/g" \$INSTANCE/bin/setenv.sh
 sed -i -e "s/serverId=serverId/serverId=\${INSTANCE_NAME}/g" \$INSTANCE/bin/setenv.sh
