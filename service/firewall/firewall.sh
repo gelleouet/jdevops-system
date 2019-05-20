@@ -30,6 +30,7 @@ start()
 	
 	# SSH (par défaut juste sortant)
 	iptables -t filter -A OUTPUT -p tcp --dport 22 -j ACCEPT
+	iptables -t filter -A OUTPUT -p tcp --dport 22000 -j ACCEPT
 	
 	# DNS
 	iptables -t filter -A OUTPUT -p tcp --dport 53 -j ACCEPT
@@ -45,7 +46,10 @@ start()
 	
 	# autorisations speciales de l'exterieur
 	if [ ! -z "$MYIP" ]; then
-		iptables -t filter -A INPUT --source $MYIP/32 -j ACCEPT  
+		for ip in $MYIP
+        do
+        	iptables -t filter -A INPUT --source $ip/32 -j ACCEPT
+       	done
 	fi
 	
 	return 0
