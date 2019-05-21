@@ -53,6 +53,15 @@ start()
        	done
 	fi
 	
+	# ports d'écoute des clusters tomcat
+	if [ ! -z "$CLUSTER_TOMCAT" ]; then
+		for port in $CLUSTER_TOMCAT
+        do
+        	iptables -t filter -A OUTPUT -p udp --dport $port -j ACCEPT
+        	iptables -t filter -A INPUT -p udp --dport $port -j ACCEPT
+       	done
+	fi
+	
 	return 0
 }
 

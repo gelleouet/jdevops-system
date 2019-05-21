@@ -5,7 +5,8 @@ After=network.target
 [Service]
 Type=oneshot
 RemainAfterExit=true
-Environment="MYIP=X.X.X.X"
+Environment="MYIP="
+Environment="CLUSTER_TOMCAT="
 ExecStart=/usr/local/bin/firewall.sh start
 ExecStop=/usr/local/bin/firewall.sh stop
 
