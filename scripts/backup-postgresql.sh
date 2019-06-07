@@ -15,12 +15,14 @@ then
 fi
 
 # configuration
-PATH_DUMP="/tmp"
 PG_DUMP="/usr/bin/pg_dump"
 DATE_JOUR=`date +%Y-%m-%d`
 PGCONNECT_TIMEOUT=10
-
+DBFILE="/tmp/${DBNAME}_$DATE_JOUR.backup"
 
 # Dump de la base
-$PG_DUMP -U postgres -h localhost --format=c --file=$PATH_DUMP/${DBNAME}_$DATE_JOUR.backup $DBNAME
+$PG_DUMP -U postgres -h localhost --format=c --file=$DBFILE $DBNAME
+
+# Envoi du backup vers AWS S3
+/root/.local/bin/aws s3 mv $DBFILE s3://bemyhomesmart/backup/
 
