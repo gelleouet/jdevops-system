@@ -21,7 +21,7 @@ PGCONNECT_TIMEOUT=10
 DBFILE="/tmp/${DBNAME}_$DATE_JOUR.backup"
 
 # Dump de la base
-$PG_DUMP -U postgres -v -h 127.0.0.1 --format=c --file=$DBFILE $DBNAME
+$PG_DUMP -U postgres -v --format=c --file=$DBFILE $DBNAME
 
 if [ ! "$?" = "0" ];
 then
