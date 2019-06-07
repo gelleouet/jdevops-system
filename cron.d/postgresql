@@ -1,0 +1,9 @@
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+
+# Sauvegardes PostgreSQL
+# ======================
+
+0 22 * * * 	root	/usr/local/bin/backup-postgresql.sh smarthome
+
+
