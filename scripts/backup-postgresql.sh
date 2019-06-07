@@ -21,8 +21,22 @@ PGCONNECT_TIMEOUT=10
 DBFILE="/tmp/${DBNAME}_$DATE_JOUR.backup"
 
 # Dump de la base
-$PG_DUMP -U postgres -h localhost --format=c --file=$DBFILE $DBNAME
+$PG_DUMP -U postgres -v --format=c --file=$DBFILE $DBNAME
+
+if [ ! "$?" = "0" ];
+then
+	echo "pg_dump error !"
+	exit 1
+fi
 
 # Envoi du backup vers AWS S3
-/root/.local/bin/aws s3 mv $DBFILE s3://bemyhomesmart/backup/
+if [ -e "$DBFILE" ];
+then
+	/root/.local/bin/aws s3 mv $DBFILE s3://bemyhomesmart/backup/
+else
+	echo "Backup $DBFILE not exist !"
+	exit 1
+fi
+
+exit 0
 
