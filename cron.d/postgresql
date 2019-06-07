@@ -4,7 +4,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # Sauvegardes PostgreSQL
 # ======================
 
-0 23 * * * 		root	/usr/local/bin/backup-postgresql.sh yousurf
-45 23 * * * 	root	/usr/local/bin/backup-postgresql.sh smarthome
+0 0 * * * 	root	/usr/local/bin/backup-postgresql.sh yousurf
+5 0 * * * 	root	/usr/local/bin/backup-postgresql.sh smarthome
 
 
