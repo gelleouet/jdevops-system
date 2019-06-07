@@ -22,5 +22,5 @@ PGCONNECT_TIMEOUT=10
 
 
 # Dump de la base
-$PG_DUMP -U postgres -h localhost --format=c --file=$PATH_DUMP/${DBNAME}_$DATE_JOUR.backup $DBNAME"
+$PG_DUMP -U postgres -h localhost --format=c --file=$PATH_DUMP/${DBNAME}_$DATE_JOUR.backup $DBNAME
 
