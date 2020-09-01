@@ -45,6 +45,9 @@ start()
 	iptables -t filter -A OUTPUT -p tcp --dport 443 -j ACCEPT
 	iptables -t filter -A INPUT -p tcp --dport 443 -j ACCEPT
 	
+	# EMAIL
+    iptables -t filter -A OUTPUT -p tcp --dport 587 -j ACCEPT
+	
 	# autorisations speciales de l'exterieur
 	if [ ! -z "$MYIP" ]; then
 		for ip in $MYIP
