@@ -188,11 +188,13 @@ fi
 
 rm -r \$INSTANCE
 mkdir \$INSTANCE
+mkdir \$INSTANCE/bin
 mkdir \$INSTANCE/conf
 mkdir \$INSTANCE/logs
 mkdir \$INSTANCE/temp
 mkdir \$INSTANCE/webapps
 cp -r $CATALINA_BASE/conf/application.yml \$INSTANCE/conf
+cp -r $CATALINA_BASE/bin/* \$INSTANCE/bin/
 scp -i /root/.ssh/jdevops.key -P 22000 $INTEGRATION_URL:/opt/artefacts/\$WAR_FILE \$INSTANCE/webapps/${DEPLOY_CONTEXT}.war
 
 sed -i -e "s/8080/\${INSTANCE_ID}${HTTP_PORT}/g" \$INSTANCE/conf/application.yml
