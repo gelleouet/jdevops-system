@@ -197,8 +197,10 @@ cp -r $CATALINA_BASE/conf/application.yml \$INSTANCE/conf
 cp -r $CATALINA_BASE/bin/* \$INSTANCE/bin/
 scp -i /root/.ssh/jdevops.key -P 22000 $INTEGRATION_URL:/opt/artefacts/\$WAR_FILE \$INSTANCE/webapps/${DEPLOY_CONTEXT}.war
 
-sed -i -e "s/8080/\${INSTANCE_ID}${HTTP_PORT}/g" \$INSTANCE/conf/application.yml
+sed -i -e "s/serverId.pid/\${INSTANCE_NAME}.pid/g" \$INSTANCE/bin/setenv.sh
+sed -i -e "s/serverId=serverId/serverId=\${INSTANCE_NAME}/g" \$INSTANCE/bin/setenv.sh
 
+sed -i -e "s/8080/\${INSTANCE_ID}${HTTP_PORT}/g" \$INSTANCE/conf/application.yml
 sed -i -e "s/#jdbc-host#/${JDBC_HOST}/g" \$INSTANCE/conf/application.yml
 sed -i -e "s/#jdbc-port#/${JDBC_PORT}/g" \$INSTANCE/conf/application.yml
 sed -i -e "s/#jdbc-database#/${JDBC_DATABASE}/g" \$INSTANCE/conf/application.yml
