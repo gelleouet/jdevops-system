@@ -216,7 +216,7 @@ After=syslog.target network.target
 Type=forking
 Environment="JAVA_HOME=$JAVA_HOME"
 Environment="CATALINA_BASE=\$INSTANCE"
-ExecStart=$JAVA_HOME/bin/java -server -Xmx1024M -Xms1024M -XX:MaxMetaspaceSize=768M -Duser.language=fr -Duser.region=FR -Duser.timezone=Europe/Paris -Dspring.config.additional-location=$CATALINA_BASE/conf/application.yml -jar $CATALINA_BASE/${DEPLOY_CONTEXT}.war
+ExecStart=$JAVA_HOME/bin/java -server -Xmx1024M -Xms1024M -XX:MaxMetaspaceSize=768M -Duser.language=fr -Duser.region=FR -Duser.timezone=Europe/Paris -Dspring.config.additional-location=\$CATALINA_BASE/conf/application.yml -jar \$CATALINA_BASE/${DEPLOY_CONTEXT}.war
 ExecStop=/bin/kill -15 \$MAINPID
 Restart=on-failure
 RestartSec=5s
