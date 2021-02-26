@@ -191,8 +191,9 @@ mkdir \$INSTANCE
 mkdir \$INSTANCE/conf
 mkdir \$INSTANCE/logs
 mkdir \$INSTANCE/temp
+mkdir \$INSTANCE/webapps
 cp -r $CATALINA_BASE/conf/application.yml \$INSTANCE/conf
-scp -i /root/.ssh/jdevops.key -P 22000 $INTEGRATION_URL:/opt/artefacts/\$WAR_FILE \$INSTANCE/${DEPLOY_CONTEXT}.war
+scp -i /root/.ssh/jdevops.key -P 22000 $INTEGRATION_URL:/opt/artefacts/\$WAR_FILE \$INSTANCE/webapps/${DEPLOY_CONTEXT}.war
 
 sed -i -e "s/8080/\${INSTANCE_ID}${HTTP_PORT}/g" \$INSTANCE/conf/application.yml
 
@@ -216,7 +217,8 @@ After=syslog.target network.target
 Type=forking
 Environment="JAVA_HOME=$JAVA_HOME"
 Environment="CATALINA_BASE=\$INSTANCE"
-ExecStart=$JAVA_HOME/bin/java -server -Xmx1024M -Xms1024M -XX:MaxMetaspaceSize=768M -Duser.language=fr -Duser.region=FR -Duser.timezone=Europe/Paris -Dspring.config.additional-location=\$CATALINA_BASE/conf/application.yml -jar \$CATALINA_BASE/${DEPLOY_CONTEXT}.war
+Environment="CATALINA_WAR=${DEPLOY_CONTEXT}.war"
+ExecStart=$INSTANCE/bin/startembeded.sh
 ExecStop=/bin/kill -15 \$MAINPID
 Restart=on-failure
 RestartSec=5s
