@@ -220,7 +220,7 @@ Type=forking
 Environment="JAVA_HOME=$JAVA_HOME"
 Environment="CATALINA_BASE=\$INSTANCE"
 Environment="CATALINA_WAR=${DEPLOY_CONTEXT}.war"
-ExecStart=$INSTANCE/bin/startembeded.sh
+ExecStart=\$INSTANCE/bin/startembeded.sh
 ExecStop=/bin/kill -15 \$MAINPID
 Restart=on-failure
 RestartSec=5s
