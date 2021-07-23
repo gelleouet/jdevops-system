@@ -315,7 +315,6 @@ After=syslog.target network.target
 
 [Service]
 Type=forking
-User=easylims
 Environment="JAVA_HOME=$JAVA_HOME"
 Environment="CATALINA_BASE=\$INSTANCE"
 Environment="WEBAPP_WAR=${DEPLOY_CONTEXT}.war"
